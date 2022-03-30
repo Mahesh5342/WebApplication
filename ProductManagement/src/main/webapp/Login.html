@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body onload="startTime()" bgcolor="lightpink">
+<div align="center">
+ <div id="txt"></div>
+	<b><script>
+   		function startTime() {
+   			const today = new Date();
+   			let h = today.getHours();
+   			let m = today.getMinutes();
+   			let s = today.getSeconds();
+   			m = checkTime(m);
+   			s = checkTime(s);
+   			document.getElementById('txt').innerHTML = "Time:"+h + ":" + m + "m:" + s+"s";
+   			setTimeout(startTime, 1000);
+   		}
+		function checkTime(i) {
+			if (i < 10) {i = "0" + i};
+			return i;
+		}
+	</script>
+<hr>Manager logined successfull
+</hr>
+	<table>
+		<h3>Welcome Manager</h3>
+		<a href="ViewProductsServlet"><input type="submit"value="view products"></a>
+			<br><br>
+		<a href="AddProduct.jsp"><input type="submit"value="add product"></a>
+			<br><br>
+		<a href="UpdateProduct.jsp"><input type="submit"value="update product"></a>
+			<br><br>
+		<a href="DeleteProduct.jsp"><input type="submit"value="delete product"></a>
+			<br><br>
+		<a href="SearchProduct.jsp"><input type="submit"value="search product"></a>
+			<br><br>
+		<a href="ProductManagerLogin.jsp"><button value="Logout">Logout</button></a>
+	</table>
+</div>
+</body>
+</html>
