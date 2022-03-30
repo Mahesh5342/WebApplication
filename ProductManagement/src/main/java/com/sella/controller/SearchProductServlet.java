@@ -18,14 +18,14 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class SearchProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchProductServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SearchProductServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,30 +34,36 @@ public class SearchProductServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");  
-	    PrintWriter out=response.getWriter();  
-	    out.println("<h1>Products List</h1>");
-	    try
-	    {
-	      int pd=Integer.parseInt(request.getParameter("productId"));  
-		  Product product = (Product) ProductManagement.getProductById(pd); 
-	      out.print("<table border='1' width='50%'");  
-	      out.print("<tr><th>productId</th><th>productName</th><th>productPrice</th></tr>");  
-	      out.print("<tr><td>"+product.getProductId()+"</td><td>"+product.getProductName()+"</td><td>"+product.getProductPrice()+"</td></tr>");  
-	      out.print("</table>"); 
-	      out.println("<br/>");
-	      out.println("<a href='AddProduct.jsp'><h>Add New Product</h></a>");
-	      out.println("<br/>");
-	      out.println("<a href='Login.html'><h>Home</h></a>");      
-	      out.close();
-	    }
-	    catch(NullPointerException e)
-	    {
-	    	response.sendRedirect("SearchProduct.jsp");
-	    }
-	    catch(NumberFormatException e)
-	    {
-	    	response.sendRedirect("SearchProduct.jsp");
-	    }
+		PrintWriter out=response.getWriter();  
+		try
+		{
+			int pd=Integer.parseInt(request.getParameter("productId"));  
+			Product product = (Product) ProductManagement.getProductById(pd);
+			if(product==null) {
+				out.println("<div align='center'>");
+				out.println("<html><body><h3>product id does not exist</h3></body></html>");
+				out.println("<h3>please enter existing product id</h3>");
+				out.println("<a href=\"SearchProduct.jsp\">OK\r\n");
+				out.println("</div>");
+			}
+			else
+			{	  
+				out.println("<div align='center'>");
+				out.print("<table border='1' width='50%'"); 
+				out.println("<body><h3>Products List</h3>");
+				out.print("<tr><th>productId</th><th>productName</th><th>productPrice</th></tr>");  
+				out.print("<tr><td>"+product.getProductId()+"</td><td>"+product.getProductName()+"</td><td>"+product.getProductPrice()+"</td></tr>");  
+				out.print("</table>"); 
+				out.println("<br/>");
+				out.println("<a href='SearchProduct.jsp'><h>OK</h></a>");
+				out.println("<br/>");
+				out.close();
+			}
+		}
+		catch(NumberFormatException e)
+		{
+			response.sendRedirect("SearchProduct.jsp");
+		}
 	}
 
 	/**

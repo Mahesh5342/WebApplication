@@ -44,8 +44,10 @@ public class LoginServlet extends HttpServlet
 		}
 		else
 		{
+			out.println("<div align='center'>");
 			out.println("<html><body><h3>invalid username or password</h3></body></html>");
-			response.sendRedirect("ProductManagerLogin.jsp");
+			out.println("<a href=\"ProductManagerLogin.jsp\">Login Again\r\n");
+			//response.sendRedirect("ProductManagerLogin.jsp");
 		}
 	
 	}

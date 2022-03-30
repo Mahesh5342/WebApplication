@@ -26,8 +26,8 @@ public class UpdateProductServlet extends HttpServlet
 	{
 		response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-        try 
-        {
+        //try 
+        //{
         	int productId=Integer.parseInt(request.getParameter("productId"));
    	 		
         	String productName=request.getParameter("productName");  
@@ -45,18 +45,24 @@ public class UpdateProductServlet extends HttpServlet
         	}
    	 		if(status>0)
    	 		{  
-   	 			request.getRequestDispatcher("ViewProductsServlet").forward(request, response);  
+   	 			//request.getRequestDispatcher("ViewProductsServlet").forward(request, response);
+   	 			out.println("<div align='center'>");
+   	 			out.println("<html><body><h3>product updated successfully</h3></body></html>");
+   	 			out.println("<a href=\"UpdateProduct.jsp\">OK\r\n");
    	 		}
    	 		else
    	 		{  
    	 			//out.println("Sorry! unable to update record");
-   	 			response.sendRedirect("UpdateProduct.jsp");
+   	 			//response.sendRedirect("UpdateProduct.jsp");
+   	 			out.println("<div align='center'>");
+   	 			out.println("<html><body><h3>please enter existing product id</h3></body></html>");
+   	 			out.println("<a href=\"UpdateProduct.jsp\">OK\r\n");
    	 		}  
-        }
-        catch(NumberFormatException e)
-        {
-        	response.sendRedirect("UpdateProduct.jsp");
-        }
+        //}
+        //catch(NumberFormatException e)
+        //{
+        	//response.sendRedirect("UpdateProduct.jsp");
+        //}
        
         out.close();   
 	}

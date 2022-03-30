@@ -56,20 +56,26 @@ public class AddServlet extends HttpServlet
 	    	 }
 	    	 else
 	    	 {
-	    		 response.sendRedirect("AddProduct.jsp");
+	    		 //response.sendRedirect("AddProduct.jsp");
+	    		 out.println("<div align='center'>");
+	 			 out.println("<html><body><h3>enter valid product name</h3></body></html>");
+	 			 //out.println("<a href=\"AddProduct.jsp\">Add Product\r\n");
 	    	 }
 	    	 
 	    	 if(status>0)
 	    	 {  
-	    		 out.print("<p>Record saved successfully!</p>");  
-	    		 request.getRequestDispatcher("ViewProductsServlet").forward(request, response);  
+	    		 //out.print("<p>Record saved successfully!</p>");  
+	    		 //request.getRequestDispatcher("ViewProductsServlet").forward(request, response);
+	    		 out.println("<div align='center'>");
+	 			 out.println("<html><body><h3>product added successfully</h3></body></html>");
+	 			 out.println("<a href=\"AddProduct.jsp\">OK\r\n"); 
 	    	 }
 	    	 else
 	    	 {  
 	    		 //out.println("Sorry! unable to save record");
 	 			 out.println("<div align='center'>");
 	 			 out.println("<h1>invalid id! already exist</h1>");  
-	 			 out.println("<a href='AddProduct.jsp'><h>Add New Product</h></a>"); 
+	 			 out.println("<a href='AddProduct.jsp'><h>Add Product</h></a>"); 
 	    		 //response.sendRedirect("AddProduct.html");
 	    	 }  
 	    	 out.close();  
