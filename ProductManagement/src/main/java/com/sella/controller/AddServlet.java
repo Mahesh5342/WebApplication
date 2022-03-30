@@ -54,6 +54,11 @@ public class AddServlet extends HttpServlet
 		    	 product.setProductPrice(productPrice); 
 				 status = ProductManagement.addProduct(product);
 	    	 }
+	    	 else
+	    	 {
+	    		 response.sendRedirect("AddProduct.jsp");
+	    	 }
+	    	 
 	    	 if(status>0)
 	    	 {  
 	    		 out.print("<p>Record saved successfully!</p>");  
