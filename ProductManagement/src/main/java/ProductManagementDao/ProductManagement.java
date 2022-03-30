@@ -36,14 +36,16 @@ public class ProductManagement
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			result=false;
 		}
 		finally 
 		{
 			try {
 				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} 
+			catch (SQLException e) 
+			{
+				result=false;
 			}
 		}
 		return result;
@@ -61,7 +63,7 @@ public class ProductManagement
 				productList.add(product);
 			}
 		}
-		catch(Exception e) 
+		catch(SQLException e) 
 		{
 			e.printStackTrace();
 		}
@@ -69,7 +71,9 @@ public class ProductManagement
 		{
 				try {
 					connection.close();
-				} catch (SQLException e) {
+				} 
+				catch (SQLException e) 
+				{
 					e.printStackTrace();
 				}
 		}
@@ -91,18 +95,21 @@ public class ProductManagement
 		}
 		catch(SQLIntegrityConstraintViolationException e) 
 		{
-			e.printStackTrace();
+			status=0;
 		}
-		catch(Exception e)  //unhandled exception type exception
+		catch(SQLException e)  //unhandled exception type exception
 		{
-			e.printStackTrace();
+			status=0;
 		}
 		finally 
 		{
-			try {
+			try
+			{
 				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} 
+			catch (SQLException e) 
+			{
+				
 				e.printStackTrace();
 			}
 		}
@@ -124,19 +131,20 @@ public class ProductManagement
 		}
 		catch(SQLSyntaxErrorException e) 
 		{
-			System.out.println("enter valid product id");
+			status=0;
 		}
-		catch(Exception e)     //unhandled exception type exception
+		catch(SQLException e)     //unhandled exception type exception
 		{
-			e.printStackTrace();
+			status=0;
 		}
 		finally 
 		{
 			try {
 				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} 
+			catch (SQLException e) 
+			{
+				status=0;
 			}
 		}
 
@@ -153,17 +161,19 @@ public class ProductManagement
 			ps.setInt(1, productId);
 			status=ps.executeUpdate();
 		}
-		catch(Exception e)     //unhandled exception type exception
+		catch(SQLException e)     //unhandled exception type exception
 		{
-			e.printStackTrace();
+			status=0;
 		}
 		finally 
 		{
-			try {
+			try 
+			{
 				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} 
+			catch (SQLException e) 
+			{
+				status=0;
 			}
 		}
 
@@ -183,17 +193,18 @@ public class ProductManagement
 				product=new Product(resultSet.getInt("prodId"), resultSet.getString("prodName"), resultSet.getFloat("prodPrice"));
 			}
 		}
-		catch(Exception e)   //unhandled exception type exception
+		catch(SQLException e)   //unhandled exception type exception
 		{
-			e.printStackTrace();
+			product=null;
 		}
 		finally 
 		{
 			try {
 				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} 
+			catch (SQLException e) 
+			{
+				product=null;
 			}
 		}
 		return product;

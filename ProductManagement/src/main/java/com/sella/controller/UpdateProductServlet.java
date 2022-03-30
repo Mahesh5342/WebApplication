@@ -35,6 +35,7 @@ public class UpdateProductServlet extends HttpServlet
         	boolean b1 = Pattern.matches("[a-zA-Z]{3,10}", productName );
         	
         	float productPrice=Float.parseFloat(request.getParameter("productPrice")); 
+        	
         	if(b1==true) {	
    	 			Product product=new Product(productId, productName, productPrice);  
    	 			product.setProductId(productId);  
