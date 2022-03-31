@@ -19,25 +19,19 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ViewProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public ViewProductsServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");  
 		PrintWriter out=response.getWriter();  
-		try 
-		{
+		//try 
+		//{
 			List<Product> list;
 
 			list = ProductManagement.getAllProducts();
@@ -56,11 +50,11 @@ public class ViewProductsServlet extends HttpServlet {
 			out.println("<a href='Login.html'><h>Back</h></a>");
 			out.println("</div>");
 
-		} 
-		catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//} 
+		//catch (Exception e) 
+		//{
+			//e.printStackTrace();
+		//}
 		out.close();
 	}
 

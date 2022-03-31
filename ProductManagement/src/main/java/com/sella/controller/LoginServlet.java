@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet
 			out.println("<a href=\"ProductManagerLogin.jsp\">Login Again\r\n");
 			//response.sendRedirect("ProductManagerLogin.jsp");
 		}
-	
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

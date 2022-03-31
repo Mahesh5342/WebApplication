@@ -21,22 +21,40 @@ public class ProductManagement
 	static ResultSet resultSet;
 	static PreparedStatement ps;
 
+	public static int registerUser(LoginBean login)  
+	{
+		int result = 0;
+		try 
+		{
+			connection = DatabaseConnection.getConnection();
+			String sql = "insert into login values(?,?)";
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, login.getUserName());
+			ps.setString(2, login.getPassword());
+			result = ps.executeUpdate();
+		}
+		catch (SQLException e) 
+		{
+			result = 0;
+		}
+		return result;
+	}
 	public boolean validate(LoginBean loginBean) 
 	{
 		boolean result = false;
 		try 
 		{
 			connection = DatabaseConnection.getConnection();
-			String sql="select username,password from login where username=? and password=?";
+			String sql = "select username,password from login where username=? and password=?";
 			ps=connection.prepareStatement(sql);
 			ps.setString(1, loginBean.getUserName());
 			ps.setString(2, loginBean.getPassword());
-			resultSet=ps.executeQuery();
-			result=resultSet.next();
+			resultSet = ps.executeQuery();
+			result = resultSet.next();
 		} 
 		catch (SQLException e) 
 		{
-			result=false;
+			result = false;
 		}
 		finally 
 		{
@@ -45,7 +63,7 @@ public class ProductManagement
 			} 
 			catch (SQLException e) 
 			{
-				result=false;
+				result = false;
 			}
 		}
 		return result;
@@ -55,11 +73,12 @@ public class ProductManagement
 		List<Product> productList=new ArrayList<Product>();
 		try
 		{
-			connection=DatabaseConnection.getConnection();
-			statement=connection.createStatement();
-			resultSet=statement.executeQuery("Select PRODID,PRODNAME,PRODPRICE from product");
-			while(resultSet.next()) {
-				Product product=new Product(resultSet.getInt("PRODID"), resultSet.getString("PRODNAME"), resultSet.getInt("PRODPRICE"));
+			connection = DatabaseConnection.getConnection();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("Select PRODID,PRODNAME,PRODPRICE from product");
+			while(resultSet.next()) 
+			{
+				Product product = new Product(resultSet.getInt("PRODID"), resultSet.getString("PRODNAME"), resultSet.getInt("PRODPRICE"));
 				productList.add(product);
 			}
 		}
@@ -69,13 +88,13 @@ public class ProductManagement
 		}
 		finally 
 		{
-				try {
-					connection.close();
-				} 
-				catch (SQLException e) 
-				{
-					e.printStackTrace();
-				}
+			try {
+				connection.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
 		}
 		return productList;
 	}
@@ -83,23 +102,23 @@ public class ProductManagement
 	//add product method
 	public static int addProduct(Product product) 
 	{
-		int status=0;
+		int status = 0;
 		try
 		{
-			connection=DatabaseConnection.getConnection();
-			ps=connection.prepareStatement("insert into Product values(?,?,?)");
+			connection = DatabaseConnection.getConnection();
+			ps = connection.prepareStatement("insert into Product values(?,?,?)");
 			ps.setInt(1, product.getProductId());
 			ps.setString(2, product.getProductName());
 			ps.setFloat(3, product.getProductPrice());
-			status=ps.executeUpdate();
+			status = ps.executeUpdate();
 		}
 		catch(SQLIntegrityConstraintViolationException e) 
 		{
-			status=0;
+			status = 0;
 		}
 		catch(SQLException e)  //unhandled exception type exception
 		{
-			status=0;
+			status = 0;
 		}
 		finally 
 		{
@@ -109,7 +128,6 @@ public class ProductManagement
 			} 
 			catch (SQLException e) 
 			{
-				
 				e.printStackTrace();
 			}
 		}
@@ -119,23 +137,23 @@ public class ProductManagement
 	//update product details method
 	public static int updateProduct(Product p)  
 	{
-		int status=0;
+		int status = 0;
 		try
 		{
-			connection=DatabaseConnection.getConnection();
-			ps=connection.prepareStatement("update product set prodName=?,prodPrice=? where prodId=?");
+			connection = DatabaseConnection.getConnection();
+			ps = connection.prepareStatement("update product set prodName=?,prodPrice=? where prodId=?");
 			ps.setInt(3, p.getProductId());
 			ps.setString(1, p.getProductName());
 			ps.setFloat(2, p.getProductPrice());
-			status =ps.executeUpdate();
+			status = ps.executeUpdate();
 		}
 		catch(SQLSyntaxErrorException e) 
 		{
-			status=0;
+			status = 0;
 		}
 		catch(SQLException e)     //unhandled exception type exception
 		{
-			status=0;
+			status = 0;
 		}
 		finally 
 		{
@@ -144,7 +162,7 @@ public class ProductManagement
 			} 
 			catch (SQLException e) 
 			{
-				status=0;
+				status = 0;
 			}
 		}
 
@@ -156,14 +174,14 @@ public class ProductManagement
 		int status=0;
 		try
 		{
-			connection=DatabaseConnection.getConnection();
-			ps=connection.prepareStatement("delete from product where PRODID=?");
+			connection = DatabaseConnection.getConnection();
+			ps = connection.prepareStatement("delete from product where PRODID=?");
 			ps.setInt(1, productId);
-			status=ps.executeUpdate();
+			status = ps.executeUpdate();
 		}
 		catch(SQLException e)     //unhandled exception type exception
 		{
-			status=0;
+			status = 0;
 		}
 		finally 
 		{
@@ -173,7 +191,7 @@ public class ProductManagement
 			} 
 			catch (SQLException e) 
 			{
-				status=0;
+				status = 0;
 			}
 		}
 
@@ -183,28 +201,30 @@ public class ProductManagement
 	public static Product getProductById(int productId) 
 	{
 		Product product=null;
-		try {
-			connection=DatabaseConnection.getConnection();
-			ps= connection.prepareStatement("select prodId,prodName,prodPrice from product where prodId=?");
+		try 
+		{
+			connection = DatabaseConnection.getConnection();
+			ps = connection.prepareStatement("select prodId,prodName,prodPrice from product where prodId=?");
 			ps.setInt(1, productId);
-			ResultSet resultSet=ps.executeQuery();
+			ResultSet resultSet = ps.executeQuery();
 			if(resultSet.next())
 			{
-				product=new Product(resultSet.getInt("prodId"), resultSet.getString("prodName"), resultSet.getFloat("prodPrice"));
+				product = new Product(resultSet.getInt("prodId"), resultSet.getString("prodName"), resultSet.getFloat("prodPrice"));
 			}
 		}
 		catch(SQLException e)   //unhandled exception type exception
 		{
-			product=null;
+			product = null;
 		}
 		finally 
 		{
-			try {
+			try 
+			{
 				connection.close();
 			} 
 			catch (SQLException e) 
 			{
-				product=null;
+				product = null;
 			}
 		}
 		return product;

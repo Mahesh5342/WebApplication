@@ -13,7 +13,7 @@
 }
 </style>
 </head>
-<body>
+<body bgcolor="palered">
 <div class="product">
 <h1>Search Product</h1>  
   <form action="SearchProductServlet" method="get">  

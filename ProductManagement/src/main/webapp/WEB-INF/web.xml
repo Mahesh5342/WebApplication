@@ -66,6 +66,12 @@
   	<description></description>
   	<servlet-class>com.sella.controller.SearchProductServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>Signup</servlet-name>
+  	<display-name>Signup</display-name>
+  	<description></description>
+  	<servlet-class>com.sella.controller.Signup</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet</url-pattern>
@@ -97,5 +103,9 @@
   <servlet-mapping>
   	<servlet-name>SearchProductServlet</servlet-name>
   	<url-pattern>/SearchProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Signup</servlet-name>
+  	<url-pattern>/Signup</url-pattern>
   </servlet-mapping>
 </web-app>

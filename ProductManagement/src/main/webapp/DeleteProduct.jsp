@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="lightpaleblue">
 <div align="center">
 <h1>Delete Product</h1>  
   <form action="DeleteProductServlet" method="get">  
