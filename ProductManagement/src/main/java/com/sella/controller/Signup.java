@@ -14,18 +14,17 @@ import com.sella.bean.LoginBean;
 
 import ProductManagementDao.ProductManagement;
 
-/**
- * Servlet implementation class Signup
- */
-public class Signup extends HttpServlet {
+public class Signup extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
 
-	public Signup() {
+	public Signup() 
+	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 
@@ -38,22 +37,25 @@ public class Signup extends HttpServlet {
 
 		boolean b1 = Pattern.matches("[a-zA-Z]{3,10}", userName );
 		boolean b2 = Pattern.matches("[a-zA-Z]{3,10}", password );
-
-		if(b1==true&&b2==true)
+		try
 		{
-			if(password.equals(confirmPassword)) 
+			if(b1==true&&b2==true)
 			{
-				LoginBean login = new LoginBean();
-				login.setUserName(userName);
-				login.setPassword(password);
-				
-					int status = ProductManagement.registerUser(login);
+				if(password.equals(confirmPassword)) 
+				{
+					LoginBean login = new LoginBean();
+					login.setUserName(userName);
+					login.setPassword(password);
+
+					int status;
+					status = ProductManagement.registerUser(login);
+
 					if(status>0)
 					{
 						//response.sendRedirect("RegisterSuccess.jsp");
 						out.println("<div align='center'>");
 						out.println("<html><body><h3>user registered successfully</h3></body></html>");
-						out.println("<a href=\"Signup.jsp\">OK\r\n"); 
+						out.println("<a href=\"ProductManagerLogin.jsp\">OK\r\n"); 
 					}
 					else
 					{
@@ -63,26 +65,29 @@ public class Signup extends HttpServlet {
 						out.println("<h1>please enter valid user name</h1>");
 						out.println("<a href=\"Signup.jsp\">OK\r\n"); 
 					}
-
+				}
+				else
+				{
+					out.println("<div align='center'>");
+					out.println("<html><body><h3>please enter valid confirm password</h3></body></html>");
+					out.println("<a href=\"Signup.jsp\">OK\r\n");
+				}
 			}
 			else
 			{
 				out.println("<div align='center'>");
-				out.println("<html><body><h3>please enter valid confirm password</h3></body></html>");
-				out.println("<a href=\"Signup.jsp\">OK\r\n");
+				out.println("<html><body><h3>please enter valid username or password</h3></body></html>");
+				out.println("<a href=\"Signup.jsp\">OK\r\n"); 
 			}
 		}
-		else
+		catch (SQLException e) 
 		{
-			out.println("<div align='center'>");
-			out.println("<html><body><h3>please enter valid username or password</h3></body></html>");
-			out.println("<a href=\"Signup.jsp\">OK\r\n"); 
+			response.sendRedirect("Signup.jsp");
 		}
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

@@ -21,7 +21,7 @@ public class ProductManagement
 	static ResultSet resultSet;
 	static PreparedStatement ps;
 
-	public static int registerUser(LoginBean login)  
+	public static int registerUser(LoginBean login) throws SQLException  
 	{
 		int result = 0;
 		try 
@@ -37,9 +37,13 @@ public class ProductManagement
 		{
 			result = 0;
 		}
+		finally
+		{
+			connection.close();
+		}
 		return result;
 	}
-	public boolean validate(LoginBean loginBean) 
+	public boolean validate(LoginBean loginBean) throws SQLException 
 	{
 		boolean result = false;
 		try 
@@ -58,17 +62,11 @@ public class ProductManagement
 		}
 		finally 
 		{
-			try {
-				connection.close();
-			} 
-			catch (SQLException e) 
-			{
-				result = false;
-			}
+			connection.close();
 		}
 		return result;
 	}
-	public static List<Product> getAllProducts() 
+	public static List<Product> getAllProducts() throws SQLException 
 	{
 		List<Product> productList=new ArrayList<Product>();
 		try
@@ -88,19 +86,12 @@ public class ProductManagement
 		}
 		finally 
 		{
-			try {
-				connection.close();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
+			connection.close();
 		}
 		return productList;
 	}
-
 	//add product method
-	public static int addProduct(Product product) 
+	public static int addProduct(Product product) throws SQLException 
 	{
 		int status = 0;
 		try
@@ -122,20 +113,12 @@ public class ProductManagement
 		}
 		finally 
 		{
-			try
-			{
-				connection.close();
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
+			connection.close();
 		}
 		return status;
-
 	}
 	//update product details method
-	public static int updateProduct(Product p)  
+	public static int updateProduct(Product p) throws SQLException  
 	{
 		int status = 0;
 		try
@@ -157,19 +140,12 @@ public class ProductManagement
 		}
 		finally 
 		{
-			try {
-				connection.close();
-			} 
-			catch (SQLException e) 
-			{
-				status = 0;
-			}
+			connection.close();
 		}
-
 		return status;
 	}
 	//delete product method
-	public static int deleteProduct(Integer productId)
+	public static int deleteProduct(Integer productId) throws SQLException
 	{
 		int status=0;
 		try
@@ -185,20 +161,12 @@ public class ProductManagement
 		}
 		finally 
 		{
-			try 
-			{
-				connection.close();
-			} 
-			catch (SQLException e) 
-			{
-				status = 0;
-			}
+			connection.close();
 		}
-
 		return status;
 	}
 	//get product by productId method
-	public static Product getProductById(int productId) 
+	public static Product getProductById(int productId) throws SQLException 
 	{
 		Product product=null;
 		try 
@@ -218,17 +186,8 @@ public class ProductManagement
 		}
 		finally 
 		{
-			try 
-			{
-				connection.close();
-			} 
-			catch (SQLException e) 
-			{
-				product = null;
-			}
+			connection.close();
 		}
 		return product;
 	}
-
-
 }

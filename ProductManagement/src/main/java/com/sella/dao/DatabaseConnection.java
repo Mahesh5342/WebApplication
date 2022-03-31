@@ -19,10 +19,10 @@ public class DatabaseConnection
 			String password="1234";
 			connection=DriverManager.getConnection(dburl,userName,password);
 		}
-		catch(ClassNotFoundException e) {
+		catch(ClassNotFoundException e) 
+		{
 			e.printStackTrace();
 		}
 		return connection;
 	}
-
 }

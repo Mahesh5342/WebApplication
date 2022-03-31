@@ -13,18 +13,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class SearchProductServlet
- */
-public class SearchProductServlet extends HttpServlet {
+public class SearchProductServlet extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
-	
-	public SearchProductServlet() {
+
+	public SearchProductServlet() 
+	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");  
@@ -33,7 +32,8 @@ public class SearchProductServlet extends HttpServlet {
 		{
 			int pd=Integer.parseInt(request.getParameter("productId"));  
 			Product product = (Product) ProductManagement.getProductById(pd);
-			if(product==null) {
+			if(product==null) 
+			{
 				out.println("<div align='center'>");
 				out.println("<html><body><h3>product id does not exist</h3></body></html>");
 				out.println("<h3>please enter existing product id</h3>");
@@ -58,14 +58,14 @@ public class SearchProductServlet extends HttpServlet {
 		{
 			response.sendRedirect("SearchProduct.jsp");
 		}
+		catch(SQLException e)
+		{
+			response.sendRedirect("SearchProduct.jsp");
+		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

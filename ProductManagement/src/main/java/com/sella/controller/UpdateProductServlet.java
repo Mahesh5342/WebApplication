@@ -30,14 +30,13 @@ public class UpdateProductServlet extends HttpServlet
 		try 
 		{
 			int productId = Integer.parseInt(request.getParameter("productId"));
-
 			String productName = request.getParameter("productName");  
-
-			boolean b1 = Pattern.matches("[a-z\sA-Z]{3,10}", productName );
-
 			float productPrice = Float.parseFloat(request.getParameter("productPrice")); 
 
-			if(b1==true) {	
+			boolean b1 = Pattern.matches("[a-z\sA-Z]{3,20}", productName );
+
+			if(b1==true) 
+			{	
 				Product product = new Product(productId, productName, productPrice);  
 				product.setProductId(productId);  
 				product.setProductName(productName);  
@@ -65,22 +64,25 @@ public class UpdateProductServlet extends HttpServlet
 				//response.sendRedirect("AddProduct.jsp");
 				out.println("<div align='center'>");
 				out.println("<html><body><h3>enter valid product name</h3></body></html>");
+				out.println("<h3>product name should be minimum of 3 characters and maximum of 20 characters</h3>");
 				out.println("<a href='UpdateProduct.jsp'><h>OK</h></a>"); 
 				//out.println("<a href=\"AddProduct.jsp\">Add Product\r\n");
 			}
-
 		}
 		catch(NumberFormatException e)
+		{
+			response.sendRedirect("UpdateProduct.jsp");
+		}
+		catch(SQLException e)
 		{
 			response.sendRedirect("UpdateProduct.jsp");
 		}
 
 		out.close();   
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

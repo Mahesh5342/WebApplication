@@ -17,19 +17,18 @@ import com.sella.bean.Product;
 
 import ProductManagementDao.ProductManagement;
 
-/**
- * Servlet implementation class AddServlet
- */
 public class AddServlet extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
 	static int status;
 
-	public AddServlet() {
+	public AddServlet() 
+	{
 		super();
 	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -40,14 +39,12 @@ public class AddServlet extends HttpServlet
 		try 
 		{  
 			int productId=Integer.parseInt(request.getParameter("productId"));
-
 			String productName = request.getParameter("productName"); 
-
-			boolean b1 = Pattern.matches("[a-z\sA-Z]{3,20}", productName );
-
 			float productPrice=Float.parseFloat(request.getParameter("productPrice")); 
 
-			if(b1==true) {
+			boolean b1 = Pattern.matches("[a-z\sA-Z]{3,20}", productName );
+			if(b1==true) 
+			{
 				Product product=new Product(productId, productName, productPrice);  
 				product.setProductId(productId);  
 				product.setProductName(productName);  
@@ -67,7 +64,7 @@ public class AddServlet extends HttpServlet
 					//out.println("Sorry! unable to save record");
 					out.println("<div align='center'>");
 					out.println("<h1>invalid id! already exist</h1>");  
-					out.println("<a href='AddProduct.jsp'><h>Add Product</h></a>"); 
+					out.println("<a href='AddProduct.jsp'><h>OK</h></a>"); 
 					//response.sendRedirect("AddProduct.html");
 				}  
 			}
@@ -76,17 +73,19 @@ public class AddServlet extends HttpServlet
 				//response.sendRedirect("AddProduct.jsp");
 				out.println("<div align='center'>");
 				out.println("<html><body><h3>enter valid product name</h3></body></html>");
+				out.println("<h3>product name should be minimum of 3 characters and maximum of 20 characters</h3>");
 				out.println("<a href='AddProduct.jsp'><h>OK</h></a>"); 
 				//out.println("<a href=\"AddProduct.jsp\">Add Product\r\n");
 			}
-
 			out.close();  
 		}
 		catch(NumberFormatException e) 
 		{
 			response.sendRedirect("AddProduct.jsp");
 		}
-
+		catch(SQLException e)
+		{
+			response.sendRedirect("AddProduct.jsp");
+		}
 	}
-
 }

@@ -13,15 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ViewProductsServlet
- */
-public class ViewProductsServlet extends HttpServlet {
+public class ViewProductsServlet extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
 
-	public ViewProductsServlet() {
+	public ViewProductsServlet() 
+	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -33,9 +31,7 @@ public class ViewProductsServlet extends HttpServlet {
 		try 
 		{
 			List<Product> list;
-
 			list = ProductManagement.getAllProducts();
-
 			out.println("<div align='center'>");
 			out.println("<body bgcolor='lightgrey'>");
 			out.println("<h1>Products List</h1>");  
@@ -49,22 +45,21 @@ public class ViewProductsServlet extends HttpServlet {
 			out.println("<br/>");
 			out.println("<a href='Login.html'><h>Back</h></a>");
 			out.println("</div>");
-
 		} 
 		catch (NumberFormatException e) 
 		{
 			//e.printStackTrace();
 			response.sendRedirect("ViewProductServlet");
 		}
+		catch(SQLException e)
+		{
+			response.sendRedirect("ViewProductServlet");
+		}
 		out.close();
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
