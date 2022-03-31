@@ -14,11 +14,11 @@
      <h2>please enter your credentials to register</h2>
      <tr>
        <td>Username</td>
-       <td><input type="text" name="username" maxlength="10" required/></td>
+       <td><input type="text" name="username" minlength="4" maxlength="10" required/></td>
      </tr>
      <tr>
        <td>Password</td>
-       <td><input type="password" name="password" maxlength="10" required/></td>
+       <td><input type="password" name="password" minlength="4" maxlength="10" required/></td>
      </tr>
      <tr>
        <td>confirmPassword</td>

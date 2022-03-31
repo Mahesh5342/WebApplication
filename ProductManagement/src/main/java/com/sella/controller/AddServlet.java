@@ -43,7 +43,7 @@ public class AddServlet extends HttpServlet
 
 			String productName = request.getParameter("productName"); 
 
-			boolean b1 = Pattern.matches("[a-zA-Z]{3,10}", productName );
+			boolean b1 = Pattern.matches("[a-z\sA-Z]{3,20}", productName );
 
 			float productPrice=Float.parseFloat(request.getParameter("productPrice")); 
 

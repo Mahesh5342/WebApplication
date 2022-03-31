@@ -29,9 +29,9 @@ public class ViewProductsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");  
-		PrintWriter out=response.getWriter();  
-		//try 
-		//{
+		PrintWriter out = response.getWriter();  
+		try 
+		{
 			List<Product> list;
 
 			list = ProductManagement.getAllProducts();
@@ -50,11 +50,12 @@ public class ViewProductsServlet extends HttpServlet {
 			out.println("<a href='Login.html'><h>Back</h></a>");
 			out.println("</div>");
 
-		//} 
-		//catch (Exception e) 
-		//{
+		} 
+		catch (NumberFormatException e) 
+		{
 			//e.printStackTrace();
-		//}
+			response.sendRedirect("ViewProductServlet");
+		}
 		out.close();
 	}
 
