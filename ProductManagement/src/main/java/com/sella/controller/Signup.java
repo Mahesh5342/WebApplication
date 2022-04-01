@@ -36,9 +36,9 @@ public class Signup extends HttpServlet
 		String confirmPassword = request.getParameter("confirmPassword");
 
 		boolean b1 = Pattern.matches("[a-zA-Z]{3,10}", userName );
-		boolean b2 = Pattern.matches("[a-zA-Z]{3,10}", password );
+		boolean b2 = Pattern.matches("[a-zA-Z0-9@]{3,10}", password );
 		try
-		{
+		{ 
 			if(b1==true&&b2==true)
 			{
 				if(password.equals(confirmPassword)) 

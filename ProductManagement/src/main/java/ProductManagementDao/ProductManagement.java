@@ -33,6 +33,10 @@ public class ProductManagement
 			ps.setString(2, login.getPassword());
 			result = ps.executeUpdate();
 		}
+		catch(SQLIntegrityConstraintViolationException e)
+		{
+			result = 0;
+		}
 		catch (SQLException e) 
 		{
 			result = 0;
