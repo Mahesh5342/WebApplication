@@ -15,17 +15,17 @@
 				<tr>
 					<td>Username</td>
 					<td><input type="text" name="username" minlength="4"
-						maxlength="15" required /></td>
+						maxlength="15" /></td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td><input type="password" name="password" minlength="4"
-						maxlength="15" required /></td>
+						maxlength="15" /></td>
 				</tr>
 				<tr>
 					<td>confirmPassword</td>
 					<td><input type="password" name="confirmPassword"
-						maxlength="15" required /></td>
+						maxlength="15" /></td>
 				</tr>
 			</table>
 			<br> <input type="submit" value="Submit"> <input

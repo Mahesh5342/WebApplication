@@ -14,23 +14,19 @@
 </style>
 </head>
 <body bgcolor="palered">
-	<div class="product">
+	<div class="product" align="center">
 		<h1>Search Product</h1>
 		<form action="SearchProductServlet" method="get">
 			<table>
 				<tr>
 					<td>productId:</td>
-					<td><input type="number" name="productId" required /></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" value="Enter" /></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="Reset" value="Reset" /></td>
+					<td><input type="number" name="productId" /></td>
 				</tr>
 			</table>
+			<br> <input type="submit" value="Enter" /> 
+			     <input type="Reset" value="Reset" /><br> 
+			<br> <a href="Login.html">Back</a>
 		</form>
-		<br /> <a href="Login.html">Back</a>
 	</div>
 </body>
 </html>

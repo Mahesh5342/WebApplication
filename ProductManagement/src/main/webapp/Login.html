@@ -15,7 +15,7 @@
    			let s = today.getSeconds();
    			m = checkTime(m);
    			s = checkTime(s);
-   			document.getElementById('txt').innerHTML = "Time:"+h + ":" + m + "m:" + s+"s";
+   			document.getElementById('txt').innerHTML = "Date & Time : "+today;
    			setTimeout(startTime, 1000);
    		}
 		function checkTime(i) {
@@ -23,8 +23,7 @@
 			return i;
 		}
 	</script>
-			<hr>User logined successfully
-			</hr>
+			<hr>User logined successfully</hr>
 			<table>
 				<h3>Welcome User</h3>
 				<a href="ViewProductsServlet"><input type="submit"

@@ -14,34 +14,27 @@
 </style>
 </head>
 <body bgcolor="lightyellow">
-	<div class="product">
+	<div class="product" align="center">
 		<h1>Add New Product</h1>
 		<form action="AddServlet" method="post">
 			<table>
 				<tr>
 					<td>productId:</td>
-					<td><input type="number" min=1 max=9999 name="productId"
-						required /></td>
+					<td><input type="number" min=1 max=9999 name="productId"/></td>
 				</tr>
 				<tr>
 					<td>productName:</td>
-					<td><input type="text" name="productName" maxlength="20"
-						required /></td>
+					<td><input type="text" name="productName" maxlength="20"/></td>
 				</tr>
 				<tr>
 					<td>productPrice:</td>
-					<td><input type="number" max=999999 name="productPrice"
-						required /></td>
+					<td><input type="number" max=999999 name="productPrice"/></td>
 				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" value="Enter" /></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="Reset" value="Reset" /></td>
-				</tr>
-			</table>
+				</table>
+				<br> <input type="submit" value="Enter" />
+					<input type="Reset" value="Reset" /> <br>
+				<br> <a href="Login.html">Back</a>
 		</form>
-		<br /> <a href="Login.html">Back</a>
 	</div>
 </body>
 </html>

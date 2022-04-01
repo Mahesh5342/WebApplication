@@ -54,14 +54,14 @@ public class Signup extends HttpServlet
 					{
 						//response.sendRedirect("RegisterSuccess.jsp");
 						out.println("<div align='center'>");
-						out.println("<html><body><h3>user registered successfully</h3></body></html>");
+						out.println("<html><body bgcolor='lightpink'><h3>user registered successfully</h3></body></html>");
 						out.println("<a href=\"ProductManagerLogin.jsp\">OK\r\n"); 
 					}
 					else
 					{
 						//out.println("Invalid username");
 						out.println("<div align='center'>");
-						out.println("<html><body><h3>user name already exist</h3></body></html>");
+						out.println("<html><body bgcolor='lightpink'><h3>user name already exist</h3></body></html>");
 						out.println("<h1>please enter valid user name</h1>");
 						out.println("<a href=\"Signup.jsp\">OK\r\n"); 
 					}
@@ -69,14 +69,14 @@ public class Signup extends HttpServlet
 				else
 				{
 					out.println("<div align='center'>");
-					out.println("<html><body><h3>please enter valid confirm password</h3></body></html>");
+					out.println("<html><body bgcolor='lightpink'><h3>please enter valid confirm password</h3></body></html>");
 					out.println("<a href=\"Signup.jsp\">OK\r\n");
 				}
 			}
 			else
 			{
 				out.println("<div align='center'>");
-				out.println("<html><body><h3>please enter valid username or password</h3></body></html>");
+				out.println("<html><body bgcolor='lightpink'><h3>please enter valid username or password</h3></body></html>");
 				out.println("<a href=\"Signup.jsp\">OK\r\n"); 
 			}
 		}

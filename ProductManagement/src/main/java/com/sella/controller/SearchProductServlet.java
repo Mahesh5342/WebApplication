@@ -35,7 +35,7 @@ public class SearchProductServlet extends HttpServlet
 			if(product==null) 
 			{
 				out.println("<div align='center'>");
-				out.println("<html><body><h3>product id does not exist</h3></body></html>");
+				out.println("<html><body bgcolor='lightpink'><h3>product id does not exist</h3></body></html>");
 				out.println("<h3>please enter existing product id</h3>");
 				out.println("<a href=\"SearchProduct.jsp\">OK\r\n");
 				out.println("</div>");
@@ -44,7 +44,7 @@ public class SearchProductServlet extends HttpServlet
 			{	  
 				out.println("<div align='center'>");
 				out.print("<table border='1' width='50%'"); 
-				out.println("<body><h3>Products List</h3>");
+				out.println("<body bgcolor='lightpink'><h3>Products List</h3>");
 				out.print("<tr><th>productId</th><th>productName</th><th>productPrice</th></tr>");  
 				out.print("<tr><td>"+product.getProductId()+"</td><td>"+product.getProductName()+"</td><td>"+product.getProductPrice()+"</td></tr>");  
 				out.print("</table>"); 
@@ -56,11 +56,14 @@ public class SearchProductServlet extends HttpServlet
 		}
 		catch(NumberFormatException e)
 		{
-			response.sendRedirect("SearchProduct.jsp");
+			//response.sendRedirect("SearchProduct.jsp");
+			out.println("<div align='center'>");
+			out.println("<html><body bgcolor='lightpink'><h3>please enter existing product id</h3></body></html>");
+			out.println("<a href=\"SearchProduct.jsp\">OK\r\n");
 		}
 		catch(SQLException e)
 		{
-			response.sendRedirect("SearchProduct.jsp");
+			//response.sendRedirect("SearchProduct.jsp");
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

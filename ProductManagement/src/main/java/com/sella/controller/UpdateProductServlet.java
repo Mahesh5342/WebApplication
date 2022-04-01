@@ -47,7 +47,7 @@ public class UpdateProductServlet extends HttpServlet
 				{  
 					//request.getRequestDispatcher("ViewProductsServlet").forward(request, response);
 					out.println("<div align='center'>");
-					out.println("<html><body><h3>product updated successfully</h3></body></html>");
+					out.println("<html><body bgcolor='lightpink'><h3>product updated successfully</h3></body></html>");
 					out.println("<a href=\"UpdateProduct.jsp\">OK\r\n");
 				}
 				else
@@ -55,7 +55,7 @@ public class UpdateProductServlet extends HttpServlet
 					//out.println("Sorry! unable to update record");
 					//response.sendRedirect("UpdateProduct.jsp");
 					out.println("<div align='center'>");
-					out.println("<html><body><h3>please enter existing product id</h3></body></html>");
+					out.println("<html><body bgcolor='lightpink'><h3>please enter existing product id</h3></body></html>");
 					out.println("<a href=\"UpdateProduct.jsp\">OK\r\n");
 				}
 			}
@@ -63,7 +63,7 @@ public class UpdateProductServlet extends HttpServlet
 			{
 				//response.sendRedirect("AddProduct.jsp");
 				out.println("<div align='center'>");
-				out.println("<html><body><h3>enter valid product name</h3></body></html>");
+				out.println("<html><body bgcolor='lightpink'><h3>enter valid product name</h3></body></html>");
 				out.println("<h3>product name should be minimum of 3 characters and maximum of 20 characters</h3>");
 				out.println("<a href='UpdateProduct.jsp'><h>OK</h></a>"); 
 				//out.println("<a href=\"AddProduct.jsp\">Add Product\r\n");
@@ -71,7 +71,10 @@ public class UpdateProductServlet extends HttpServlet
 		}
 		catch(NumberFormatException e)
 		{
-			response.sendRedirect("UpdateProduct.jsp");
+			//response.sendRedirect("UpdateProduct.jsp");
+			out.println("<div align='center'>");
+			out.println("<html><body bgcolor='lightpink'><h3>please enter valid product details</h3></body></html>");
+			out.println("<a href=\"UpdateProduct.jsp\">OK\r\n");
 		}
 		catch(SQLException e)
 		{
