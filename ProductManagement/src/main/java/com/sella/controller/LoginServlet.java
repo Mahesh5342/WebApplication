@@ -39,12 +39,15 @@ public class LoginServlet extends HttpServlet
 			loginBean.setPassword(password);
 			if(dao.validate(loginBean))
 			{
-				response.sendRedirect("Login.html");
+				//response.sendRedirect("Login.html");
+				out.println("<div align='center'>");
+				out.println("<html><body bgcolor='lightpink'><h3>user logined successfully</h3></body></html>");
+				out.println("<a href=\"Login.html\">OK\r\n");
 			}
 			else
 			{
 				out.println("<div align='center'>");
-				out.println("<html><body><h3>invalid username or password</h3></body></html>");
+				out.println("<html><body bgcolor='lightpink'><h3>invalid username or password</h3></body></html>");
 				out.println("<a href=\"ProductManagerLogin.jsp\">Login Again\r\n");
 				//response.sendRedirect("ProductManagerLogin.jsp");
 			}

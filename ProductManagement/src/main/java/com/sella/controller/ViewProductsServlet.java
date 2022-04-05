@@ -48,7 +48,6 @@ public class ViewProductsServlet extends HttpServlet
 		} 
 		catch (NumberFormatException e) 
 		{
-			//e.printStackTrace();
 			response.sendRedirect("ViewProductServlet");
 		}
 		catch(SQLException e)

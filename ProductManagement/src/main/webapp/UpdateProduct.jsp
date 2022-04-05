@@ -28,12 +28,14 @@
 				</tr>
 				<tr>
 					<td>productPrice:</td>
-					<td><input type="number" max=999999 name="productPrice"/></td>
+					<td><input type="number" max=999999 name="productPrice" step="0.01"/></td>
 				</tr>
 			</table>
 			<br> <input type="submit" value="Enter" />
 				 <input type="Reset" value="Reset" /><br>
-			<br> <a href="Login.html">Back</a>	
+			<br> 
+			<a href="ViewProductsServlet">View Products</a><br><br>
+			<a href="Login.html">Back</a>	
 		</form>
 	</div>
 </body>

@@ -28,7 +28,7 @@
 				</tr>
 				<tr>
 					<td>productPrice:</td>
-					<td><input type="number" max=999999 name="productPrice"/></td>
+					<td><input type="number" max=999999 name="productPrice" step="0.01" /></td>
 				</tr>
 				</table>
 				<br> <input type="submit" value="Enter" />

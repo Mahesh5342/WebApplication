@@ -80,7 +80,7 @@ public class ProductManagement
 			resultSet = statement.executeQuery("Select PRODID,PRODNAME,PRODPRICE from product");
 			while(resultSet.next()) 
 			{
-				Product product = new Product(resultSet.getInt("PRODID"), resultSet.getString("PRODNAME"), resultSet.getInt("PRODPRICE"));
+				Product product = new Product(resultSet.getInt("PRODID"), resultSet.getString("PRODNAME"), resultSet.getFloat("PRODPRICE"));
 				productList.add(product);
 			}
 		}

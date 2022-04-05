@@ -5,7 +5,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
 </head>
-	<body bgcolor="orange">
+	<body bgcolor="lightblue">
 	<form action="LoginServlet">
 		<div align="center">
 			<table>
