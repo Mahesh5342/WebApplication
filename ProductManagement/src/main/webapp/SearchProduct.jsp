@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Search Product</title>
 <style>
 .product {
 	position: absolute;
@@ -13,7 +13,7 @@
 }
 </style>
 </head>
-<body bgcolor="palered">
+<body bgcolor="lightblue">
 	<div class="product" align="center">
 		<h1>Search Product</h1>
 		<form action="SearchProductServlet" method="get">

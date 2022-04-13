@@ -72,6 +72,30 @@
   	<description></description>
   	<servlet-class>com.sella.controller.Signup</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ViewAllProduct</servlet-name>
+  	<display-name>ViewAllProduct</display-name>
+  	<description></description>
+  	<servlet-class>com.sella.controller.ViewAllProduct</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AllProducts</servlet-name>
+  	<display-name>AllProducts</display-name>
+  	<description></description>
+  	<servlet-class>com.sella.controller.AllProducts</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeleteProductServlet1</servlet-name>
+  	<display-name>DeleteProductServlet1</display-name>
+  	<description></description>
+  	<servlet-class>com.sella.controller.DeleteProductServlet1</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SearchProductByName</servlet-name>
+  	<display-name>SearchProductByName</display-name>
+  	<description></description>
+  	<servlet-class>com.sella.controller.SearchProductByName</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet</url-pattern>
@@ -107,5 +131,21 @@
   <servlet-mapping>
   	<servlet-name>Signup</servlet-name>
   	<url-pattern>/Signup</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ViewAllProduct</servlet-name>
+  	<url-pattern>/ViewAllProduct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AllProducts</servlet-name>
+  	<url-pattern>/AllProducts</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteProductServlet1</servlet-name>
+  	<url-pattern>/DeleteProductServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SearchProductByName</servlet-name>
+  	<url-pattern>/SearchProductByName</url-pattern>
   </servlet-mapping>
 </web-app>

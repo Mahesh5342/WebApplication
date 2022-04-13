@@ -7,11 +7,11 @@ import java.util.List;
 
 import com.sella.bean.Product;
 
-import ProductManagementDao.ProductManagement;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import productmanagementdao.ProductManagement;
 
 public class SearchProductServlet extends HttpServlet 
 {
@@ -43,8 +43,8 @@ public class SearchProductServlet extends HttpServlet
 			else
 			{	  
 				out.println("<div align='center'>");
-				out.print("<table border='1' width='50%'"); 
-				out.println("<body bgcolor='lightpink'><h3>Products List</h3>");
+				out.println("<html><body bgcolor='lightblue'><h3>Products List</h3></html>");
+				out.print("<table border='1' width='50%' bgcolor='lightgrey'"); 
 				out.print("<tr><th>productId</th><th>productName</th><th>productPrice</th></tr>");  
 				out.print("<tr><td>"+product.getProductId()+"</td><td>"+product.getProductName()+"</td><td>"+product.getProductPrice()+"</td></tr>");  
 				out.print("</table>"); 

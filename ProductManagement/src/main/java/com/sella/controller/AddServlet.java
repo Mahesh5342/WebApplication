@@ -4,6 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import productmanagementdao.ProductManagement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,8 +15,6 @@ import java.sql.SQLSyntaxErrorException;
 import java.util.regex.Pattern;
 
 import com.sella.bean.Product;
-
-import ProductManagementDao.ProductManagement;
 
 public class AddServlet extends HttpServlet 
 {
@@ -45,7 +44,7 @@ public class AddServlet extends HttpServlet
 			boolean b1 = Pattern.matches("[a-z\sA-Z]{3,20}", productName );
 			if(b1==true) 
 			{
-				Product product=new Product(productId, productName, productPrice);  
+				Product product = new Product(productId, productName, productPrice);  
 				product.setProductId(productId);  
 				product.setProductName(productName);  
 				product.setProductPrice(productPrice); 

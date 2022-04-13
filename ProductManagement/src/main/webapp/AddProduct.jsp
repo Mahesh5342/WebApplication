@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add New Product</title>
 <style>
 .product {
 	position: absolute;
@@ -13,7 +13,7 @@
 }
 </style>
 </head>
-<body bgcolor="lightyellow">
+<body bgcolor="lightblue">
 	<div class="product" align="center">
 		<h1>Add New Product</h1>
 		<form action="AddServlet" method="post">
@@ -28,7 +28,7 @@
 				</tr>
 				<tr>
 					<td>productPrice:</td>
-					<td><input type="number" max=999999 name="productPrice" step="0.01" /></td>
+					<td><input type="number" min=20000 max=200000 name="productPrice" step="0.01" /></td>
 				</tr>
 				</table>
 				<br> <input type="submit" value="Enter" />

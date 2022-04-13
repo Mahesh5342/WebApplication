@@ -3,12 +3,13 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>User Login</title>
 </head>
 	<body bgcolor="lightblue">
 	<form action="LoginServlet">
 		<div align="center">
 			<table>
+				<br><h3>Product Store Management</h3>
 				<h3>User Login</h3>
 				<tr>
 					<td>Username</td>

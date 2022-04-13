@@ -13,16 +13,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import productmanagementdao.ProductManagement;
 
-public class ViewProductsServlet extends HttpServlet 
+public class AllProducts extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
+       
+    public AllProducts() 
+    {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public ViewProductsServlet() 
-	{
-		super();
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -43,7 +44,7 @@ public class ViewProductsServlet extends HttpServlet
 			}  
 			out.print("</table>"); 
 			out.println("<br/>");
-			out.println("<a href='Login.html'><h>Back</h></a>");
+			out.println("<a href='DeleteProduct.jsp'><h>Back</h></a>");
 			out.println("</div>");
 		} 
 		catch (NumberFormatException e) 
@@ -56,6 +57,7 @@ public class ViewProductsServlet extends HttpServlet
 		}
 		out.close();
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		// TODO Auto-generated method stub
