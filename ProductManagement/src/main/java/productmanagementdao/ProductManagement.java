@@ -21,7 +21,7 @@ public class ProductManagement
 	static ResultSet resultSet;
 	static PreparedStatement ps;
 
-	public static int registerUser(LoginBean login) throws SQLException  
+	public static int registerUser(LoginBean register) throws SQLException  
 	{
 		int result = 0;
 		try 
@@ -29,8 +29,8 @@ public class ProductManagement
 			connection = DatabaseConnection.getConnection();
 			String sql = "insert into login values(?,?)";
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, login.getUserName());
-			ps.setString(2, login.getPassword());
+			ps.setString(1, register.getUserName());
+			ps.setString(2, register.getPassword());
 			result = ps.executeUpdate();
 		}
 		catch(SQLIntegrityConstraintViolationException e)
@@ -47,7 +47,7 @@ public class ProductManagement
 		}
 		return result;
 	}
-	public boolean validate(LoginBean loginBean) throws SQLException 
+	public boolean validate(LoginBean login) throws SQLException 
 	{
 		boolean result = false;
 		try 
@@ -55,8 +55,8 @@ public class ProductManagement
 			connection = DatabaseConnection.getConnection();
 			String sql = "select username,password from login where username=? and password=?";
 			ps=connection.prepareStatement(sql);
-			ps.setString(1, loginBean.getUserName());
-			ps.setString(2, loginBean.getPassword());
+			ps.setString(1, login.getUserName());
+			ps.setString(2, login.getPassword());
 			resultSet = ps.executeQuery();
 			result = resultSet.next();
 		} 
